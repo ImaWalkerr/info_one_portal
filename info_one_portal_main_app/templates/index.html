@@ -252,4 +252,31 @@
             </ul>
         </div>
     </section>
+    <section class="fourth-block">
+        <div class="container">
+            <div class="fourth-block__content">
+                <div class="fourth-block__text">
+                    <h2 class="section-title fourth-block__title">Comments and suggestions block</h2>
+                    <p class="fourth-block__description">Fill the form to leave your feedback</p>
+                </div>
+                <div class="fourth-block__form">
+                    <form action="/" method="post" class="post-form">
+                        {% csrf_token %}
+                        <label>
+                            <input name="text" placeholder="Nickname" class="post-form__field-name">
+                        </label>
+                        <label>
+                            <input name="email" placeholder="Email" class="post-form__field-email">
+                        </label>
+                        <label>
+                            <input name="text" placeholder="Post text" class="post-form__field-post">
+                        </label>
+                        <label>
+                            <button type="submit" class="post-form__btn btn-reset" aria-label="Add post">Add post</button>
+                        </label>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
