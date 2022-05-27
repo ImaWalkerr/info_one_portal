@@ -1,0 +1,47 @@
+<!doctype html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>{% block title %}InfoOnePortal{% endblock %}</title>
+    <link rel="shortcut icon" href="#"/>
+    <link type="text/css" href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/swiper.min.css' %}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/384785ee12.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="container header__container flex">
+                <ul class="header__social social">
+                    <li class="social__item">
+                        <a href="#" class="social__link social__link" aria-label="Go to Telegram">
+                            <i class="fa-brands fa-telegram"></i>
+                        </a>
+                    </li>
+                    <li class="social__item">
+                        <a href="#" class="social__link social__link" aria-label="Go to LinkedIn">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                    </li>
+                    <li class="social__item">
+                        <a href="#" class="social__link social__link" aria-label="Go to Viber">
+                            <i class="fa-brands fa-viber"></i>
+                        </a>
+                    </li>
+                </ul>
+                <a href="#" class="header__logo logo">InfoOnePortal</a>
+                <button class="header__menu menu btn-reset" aria-label="Open menu">
+                    <span class="menu__line"></span>
+                    <span class="menu__line"></span>
+                </button>
+            </div>
+        </header>
+        <main class="main">{% block content %}{% endblock %}</main>
+    </div>
+<script type="text/javascript" src="{% static 'js/swiper.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
