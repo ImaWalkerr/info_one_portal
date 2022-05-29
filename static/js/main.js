@@ -1,6 +1,11 @@
-// Swiper main-slider settings //
+const weather_slider = document.querySelector('.slider-container');
+const currency_slider = document.querySelector('.slider-container-currency');
+const burger = document.querySelector('.burger');
+const close = document.querySelector('.menu__close');
+const menu = document.querySelector('.menu');
 
-let slider = new Swiper ('.slider-container', {
+// Swiper main-slider settings //
+let slider = new Swiper (weather_slider, {
     centeredSlides: true,
     slidesPerView: 'auto',
     spaceBetween: 50,
@@ -30,14 +35,25 @@ let slider = new Swiper ('.slider-container', {
     // },
 });
 
-let slider_currency = new Swiper ('.slider-container-currency', {
+let slider_currency = new Swiper (currency_slider, {
     centeredSlides: false,
     slidesPerView: 3,
     spaceBetween: 50,
     loop: true,
+    grabCursor: true,
+    speed: 800,
     autoplay: {
         delay: 1000,
         stopOnLastSlide: false,
         disableOnInteraction: false
     },
+});
+
+// burger menu //
+burger.addEventListener('click', () => {
+    menu.classList.add('menu__visible');
+});
+
+close.addEventListener('click', () => {
+    menu.classList.remove('menu__visible');
 });

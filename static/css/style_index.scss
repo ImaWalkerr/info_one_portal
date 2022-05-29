@@ -82,10 +82,11 @@ input[type="search"]::-webkit-search-results-decoration {
 		text-shadow: 0 -2px 2px rgba(0, 0, 0, 0.7);
 		margin: 0 0 5px 20px;
 		cursor: pointer;
-	}
-	&__title:hover {
-		opacity: 0.8;
-		transition: opacity 0.3s;
+		transition: color 0.3s;
+		&:hover {
+			color: $accent-font-color;
+			transition: color 0.3s;
+		}
 	}
 	&__text {
 		font-family: $main-font-family;
@@ -95,10 +96,11 @@ input[type="search"]::-webkit-search-results-decoration {
 		text-shadow: 0 -2px 2px rgba(0, 0, 0, 0.7);
 		margin: 0 0 0 20px;
 		cursor: pointer;
-	}
-	&__text:hover {
-		opacity: 0.8;
-		transition: opacity 0.3s;
+		transition: color 0.3s;
+		&:hover {
+			color: $accent-font-color;
+			transition: color 0.3s;
+		}
 	}
 }
 
@@ -122,6 +124,11 @@ input[type="search"]::-webkit-search-results-decoration {
 		color: $white-font-color;
 		text-shadow: 0 -5px 2px rgba(0, 0, 0, 0.7);
 		background-color: $neptune-font-color;
+		transition: background-color 0.3s;
+		&:hover {
+			background-color: $neptune-hover-font-color;
+			transition: background-color 0.3s;
+		}
 	}
 	&__image {
 		width: 100%;
@@ -137,14 +144,15 @@ input[type="search"]::-webkit-search-results-decoration {
 	top: 0;
 	width: 100%;
 	/* background-color: rgba(0, 0, 0, 0.7); */
-	z-index: 100;
+	z-index: 5;
 	&__container {
-		justify-content: space-evenly;
+		justify-content: space-between;
 		align-items: center;
 		padding: 55px 0;
 	}
 	&__global {
 		display: flex;
+		align-items: center;
 	}
 }
 
@@ -159,8 +167,8 @@ input[type="search"]::-webkit-search-results-decoration {
 		cursor: pointer;
 	}
 	&__link:hover {
-		opacity: 0.8;
-		transition: opacity 0.3s;
+		color: $accent-font-color;
+		transition: color 0.3s;
 	}
 	&__item:not(:last-child) {
 		margin: 0 40px 0 0;
@@ -169,7 +177,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .logo {
 	font-family: $main-font-family;
-	font-size: 22px;
+	font-size: 30px;
 	font-weight: 800;
 	line-height: 1;
 	text-align: center;
@@ -179,18 +187,91 @@ input[type="search"]::-webkit-search-results-decoration {
 	text-transform: uppercase;
 	transition: opacity 0.3s;
 	cursor: pointer;
+	z-index: 15;
+	&:hover {
+		color: $accent-font-color;
+		transition: color 0.3s;
+	}
 }
 
-.logo:hover {
-	opacity: 0.8;
-	transition: opacity 0.3s;
-}
-
+/* menu (burger) styles */
 .menu {
+	position: fixed;
+	left: -150vw;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	background-color: rgba(0, 0, 0, 0.7);
+	transition: left 0.3s;
+	&__visible {
+		left: 0;
+		transition: left 0.3s;
+	}
+	&__nav {
+		width: 100%;
+		height: 100%;
+		padding: 30px 0 0 0;
+		overflow-y: auto;
+	}
+	&__list {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+	}
+	&__item {
+		margin: 0 0 15px 0;
+	}
+	&__link {
+		font-family: $main-font-family;
+		font-size: 35px;
+		font-weight: 500;
+		text-align: center;
+		letter-spacing: 2px;
+		color: $white-font-color;
+		text-shadow: 0 -5px 2px rgba(0, 0, 0, 0.7);
+		transition: color 0.3s;
+		&:hover {
+			color: $accent-font-color;
+			transition: color 0.3s;
+		}
+	}
+	&__close {
+		position: absolute;
+		width: 40px;
+		height: 40px;
+		right: 1%;
+		top: 4%;
+	}
+	&__line {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 3px;
+		background-color: $white-font-color;
+		&:first-child {
+			transform: rotate(45deg);
+		}
+		&:last-child {
+			transform: rotate(-45deg);
+		}
+	}
+}
+
+.burger {
 	position: relative;
 	width: 48px;
 	height: 10px;
 	cursor: pointer;
+	transition: background-color 0.3s;
+	&:hover .burger__line {
+		background-color: $accent-font-color;
+		transition: background-color 0.3s;
+	}
 	&__line {
 		display: block;
 		position: absolute;
@@ -199,6 +280,7 @@ input[type="search"]::-webkit-search-results-decoration {
 		width: 100%;
 		height: 2px;
 		background-color: $white-font-color;
+		transition: background-color 0.3s;
 	}
 	&__line:last-child {
 		top: auto;
@@ -209,7 +291,14 @@ input[type="search"]::-webkit-search-results-decoration {
 .languages {
 	color: $white-font-color;
 	cursor: pointer;
+	transition: color 0.3s;
+	margin: 0 40px 0 0;
+	&:hover {
+		color: $accent-font-color;
+		transition: color 0.3s;
+	}
 	li {
+		position: relative;
 		margin: 0 10px 0 0;
 		font-size: 30px;
 	}
@@ -219,8 +308,9 @@ input[type="search"]::-webkit-search-results-decoration {
 	&__item {
 		display: none;
 		position: absolute;
-		right: 34.5%;
-		top: 85px;
+		width: max-content;
+		top: 30px;
+		right: 0;
 		padding: 20px;
 		background-color: rgba(0, 0, 0, 0.7);
 		border-radius: 8px;
@@ -234,45 +324,15 @@ input[type="search"]::-webkit-search-results-decoration {
 		color: $white-font-color;
 		text-shadow: 0 -5px 2px rgba(0, 0, 0, 0.7);
 		padding: 10px;
+		transition: color 0.3s;
 	}
-	&__ru,
+	&__ru:hover {
+		color: $accent-font-color;
+		transition: color 0.3s;
+	}
 	&__en:hover {
-		opacity: 0.8;
-		transition: opacity 0.3s;
-	}
-}
-
-.profile {
-	color: $white-font-color;
-	cursor: pointer;
-	li {
-		margin: 0 10px 0 0;
-		font-size: 30px;
-	}
-	li:hover .profile__select {
-		display: block;
-	}
-	&__select {
-		display: none;
-		position: absolute;
-		right: 24%;
-		top: 85px;
-		padding: 20px;
-		background-color: rgba(0, 0, 0, 0.7);
-		border-radius: 8px;
-	}
-	&__link {
-		font-family: $main-font-family;
-		font-size: 20px;
-		font-weight: 500;
-		text-align: center;
-		color: $white-font-color;
-		text-shadow: 0 -2px 2px rgba(0, 0, 0, 0.7);
-		padding: 10px;
-	}
-	&__link:hover {
-		opacity: 0.8;
-		transition: opacity 0.3s;
+		color: $accent-font-color;
+		transition: color 0.3s;
 	}
 }
 
@@ -312,11 +372,12 @@ input[type="search"]::-webkit-search-results-decoration {
 		background-color: rgba(0, 0, 0, 0.5);
 		border-radius: 25px;
 		text-transform: uppercase;
+		transition: color 0.3s;
 		cursor: pointer;
 	}
 	&__link:hover {
-		opacity: 0.8;
-		transition: opacity 0.3s;
+		color: $accent-font-color;
+		transition: color 0.3s;
 	}
 	&__title {
 		font-family: $main-font-family;
@@ -354,13 +415,14 @@ input[type="search"]::-webkit-search-results-decoration {
 		color: $white-font-color;
 		text-shadow: 0 -3px 2px rgba(0, 0, 0, 0.7);
 		background-color: $accent-font-color;
+		transition: background-color 0.3s;
 		text-transform: uppercase;
 		border-radius: 10px;
 		z-index: 5;
 	}
 	&__btn:hover {
-		opacity: 0.8;
-		transition: opacity 0.3s;
+		background-color: $accent-hover-font-color;
+		transition: background-color 0.3s;
 	}
 	&__bottom {
 		display: flex;
@@ -470,19 +532,41 @@ input[type="search"]::-webkit-search-results-decoration {
 		position: absolute;
 		left: 0;
 		bottom: 0;
-		font-family: $main-font-family;
-		font-weight: 700;
-		font-size: 24px;
-		line-height: 31px;
-		color: $white-font-color;
-		text-shadow: 0 -5px 2px rgba(0, 0, 0, 0.7);
 		padding: 0 55px 60px 55px;
 		transform: translateY(300px);
 		transition: transform 0.3s ease-in-out;
 	}
-	&__text:hover {
-		opacity: 0.8;
-		transition: opacity 0.3s;
+	&__info {
+		font-family: $main-font-family;
+		font-weight: 700;
+		font-size: 24px;
+		line-height: 31px;
+		text-align: left;
+		color: $white-font-color;
+		text-shadow: 0 -5px 2px rgba(0, 0, 0, 0.7);
+		transition: color 0.3s;
+		padding: 0 0 50px 0;
+		&:hover {
+			color: $accent-font-color;
+			transition: color 0.3s;
+		}
+	}
+	&__btn {
+		left: 0;
+		bottom: 0;
+		background-color: $accent-font-color;
+		font-family: $main-font-family;
+		font-size: 20px;
+		font-weight: 700;
+		color: $white-font-color;
+		text-shadow: 0 -3px 2px rgba(0, 0, 0, 0.7);
+		border-radius: 8px;
+		transition: background-color 0.3s;
+		padding: 15px;
+		&:hover {
+			background-color: $accent-hover-font-color;
+			transition: background-color 0.3s;
+		}
 	}
 }
 
@@ -614,6 +698,11 @@ input[type="search"]::-webkit-search-results-decoration {
 		color: $black-font-color;
 		text-shadow: 0 -2px 2px rgba(255, 255, 255, 0.7);
 		padding: 25px 0 0 35px;
+		transition: color 0.3s;
+		&:hover {
+			color: $accent-font-color;
+			transition: color 0.3s;
+		}
 	}
 	&__span {
 		font-family: $main-font-family;
@@ -623,6 +712,11 @@ input[type="search"]::-webkit-search-results-decoration {
 		color: $black-font-color;
 		text-shadow: 0 -2px 2px rgba(255, 255, 255, 0.7);
 		padding: 15px;
+		transition: color 0.3s;
+		&:hover {
+			color: $accent-font-color;
+			transition: color 0.3s;
+		}
 	}
 	&__description,
 	&__text {
@@ -633,6 +727,11 @@ input[type="search"]::-webkit-search-results-decoration {
 		color: $black-font-color;
 		text-shadow: 0 -2px 2px rgba(255, 255, 255, 0.7);
 		padding: 15px;
+		transition: color 0.3s;
+		&:hover {
+			color: $accent-hover-font-color;
+			transition: color 0.3s;
+		}
 	}
 	&__img {
 		object-fit: cover;
@@ -712,10 +811,11 @@ input[type="search"]::-webkit-search-results-decoration {
 		border-bottom-left-radius: 8px;
 		border-bottom-right-radius: 8px;
 		text-transform: uppercase;
-	}
-	&__btn:hover {
-		opacity: 0.8;
-		transition: opacity 0.3s;
+		transition: background-color 0.3s;
+		&:hover {
+			background-color: $neptune-hover-font-color;
+			transition: background-color 0.3s;
+		}
 	}
 }
 
@@ -742,6 +842,11 @@ input[type="search"]::-webkit-search-results-decoration {
 		color: $black-font-color;
 		text-shadow: 0 -3px 2px rgba(255, 255, 255, 0.7);
 		margin: 0 0 10px 0;
+		transition: color 0.3s;
+		&:hover {
+			color: $accent-font-color;
+			transition: color 0.3s;
+		}
 	}
 	&__text {
 		font-family: $main-font-family;
@@ -750,5 +855,10 @@ input[type="search"]::-webkit-search-results-decoration {
 		text-align: center;
 		color: $black-font-color;
 		text-shadow: 0 -3px 2px rgba(255, 255, 255, 0.7);
+		transition: color 0.3s;
+		&:hover {
+			color: $accent-font-color;
+			transition: color 0.3s;
+		}
 	}
 }

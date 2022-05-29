@@ -60,9 +60,9 @@
                 <a href="#" class="first-block__btn btn-reset">Read the news</a>
             </div>
             <div class="first-block__bottom">
-                <form action="/" method="get" class="first-block__form search-form">
+                <form action="{% url 'main_page' %}" method="get" class="first-block__form search-form">
                     <label>
-                        <input type="search" name="search" placeholder="City search for weather forecast" class="search-form__field">
+                        <input type="search" name="weather_search" placeholder="City search for weather forecast" class="search-form__field">
                         <button type="submit" class="search-form__btn btn-reset" aria-label="City search for weather forecast">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
@@ -81,7 +81,7 @@
                                 <div class="main-slider__media">
                                     <img src="{% static '/media/first_block/weather_2.jpg' %}" class="main-slider__image" alt="Slide-weather-image-2">
                                 </div>
-                                <p class="main-slider__text">Weather headline 2</p>
+                                <p class="main-slider__text">{{ city_temp }} headline 2</p>
                             </div>
                             <div class="swiper-slide">
                                 <div class="main-slider__media">
@@ -108,19 +108,31 @@
             <ul class="second-block__list">
                 <li class="second-block__item">
                     <img src="{% static '/media/second_block/travel_1.jpg' %}" class="second-block__image" alt="Travel image location 1">
-                    <div class="second-block__text">Place description Test text for layout</div>
+                    <div class="second-block__text">
+                        <div class="second-block__info">Place description Test text for layout</div>
+                        <a href="#" class="second-block__btn btn-reset">Add to favorites</a>
+                    </div>
                 </li>
                 <li class="second-block__item">
                     <img src="{% static '/media/second_block/travel_2.jpg' %}" class="second-block__image" alt="Travel image location 2">
-                    <div class="second-block__text">Place description Test text for layout</div>
+                    <div class="second-block__text">
+                        <div class="second-block__info">Place description Test text for layout</div>
+                        <a href="#" class="second-block__btn btn-reset">Add to favorites</a>
+                    </div>
                 </li>
                 <li class="second-block__item">
                     <img src="{% static '/media/second_block/travel_3.jpg' %}" class="second-block__image" alt="Travel image location 3">
-                    <div class="second-block__text">Place description Test text for layout</div>
+                    <div class="second-block__text">
+                        <div class="second-block__info">Place description Test text for layout</div>
+                        <a href="#" class="second-block__btn btn-reset">Add to favorites</a>
+                    </div>
                 </li>
                 <li class="second-block__item">
                     <img src="{% static '/media/second_block/travel_4.jpg' %}" class="second-block__image" alt="Travel image location 4">
-                    <div class="second-block__text">Place description Test text for layout</div>
+                    <div class="second-block__text">
+                        <div class="second-block__info">Place description Test text for layout</div>
+                        <a href="#" class="second-block__btn btn-reset">Add to favorites</a>
+                    </div>
                 </li>
             </ul>
         </div>
