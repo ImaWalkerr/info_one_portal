@@ -13,51 +13,57 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide currency-slide">
                             <div class="currency-slider">
-                                <div class="currency-slider__title">Currency 1</div>
-                                <div class="currency-slider__text">Some test text block 1</div>
+                                <div class="currency-slider__title">{{ currencies.base }} rate to USD</div>
+                                <div class="currency-slider__text">1 BYN = {{ currencies.rates.USD }} USD</div>
                             </div>
                         </div>
                         <div class="swiper-slide currency-slide">
                             <div class="currency-slider">
-                                <div class="currency-slider__title">Currency 2</div>
-                                <div class="currency-slider__text">Some test text block 2</div>
+                                <div class="currency-slider__title">{{ currencies.base }} rate to EUR</div>
+                                <div class="currency-slider__text">1 BYN = {{ currencies.rates.EUR }} EUR</div>
                             </div>
                         </div>
                         <div class="swiper-slide currency-slide">
                             <div class="currency-slider">
-                                <div class="currency-slider__title">Currency 3</div>
-                                <div class="currency-slider__text">Some test text block 3</div>
+                                <div class="currency-slider__title">{{ currencies.base }} rate to RUB</div>
+                                <div class="currency-slider__text">1 BYN = {{ currencies.rates.RUB }} RUB</div>
                             </div>
                         </div>
                         <div class="swiper-slide currency-slide">
                             <div class="currency-slider">
-                                <div class="currency-slider__title">Currency 4</div>
-                                <div class="currency-slider__text">Some test text block 4</div>
+                                <div class="currency-slider__title">{{ currencies.base }} rate to GBP</div>
+                                <div class="currency-slider__text">1 BYN = {{ currencies.rates.GBP }} GBP</div>
                             </div>
                         </div>
                         <div class="swiper-slide currency-slide">
                             <div class="currency-slider">
-                                <div class="currency-slider__title">Currency 5</div>
-                                <div class="currency-slider__text">Some test text block 5</div>
+                                <div class="currency-slider__title">{{ currencies.base }} rate to JPY</div>
+                                <div class="currency-slider__text">1 BYN = {{ currencies.rates.JPY }} JPY</div>
                             </div>
                         </div>
                         <div class="swiper-slide currency-slide">
                             <div class="currency-slider">
-                                <div class="currency-slider__title">Currency 6</div>
-                                <div class="currency-slider__text">Some test text block 6</div>
+                                <div class="currency-slider__title">{{ currencies.base }} rate to CNY</div>
+                                <div class="currency-slider__text">1 BYN = {{ currencies.rates.CNY }} CNY </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="first-block__adaptive">
-                <a href="#" class="first-block__link">New news</a>
-                <h1 class="first-block__title">This news will be shocked you! Example test</h1>
-                <p class="first-block__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi maximus
-                    lorem eget quam pretium accumsan. Nam sit amet dictum tortor, ac rutrum mi. Suspendisse potenti. Donec
-                    molestie felis a accumsan sollicitudin. Nulla nec diam id felis fermentum feugiat. Curabitur maximus
-                    nunc in augue ultrices placerat. Suspendisse rhoncus risus lectus, eu feugiat justo posuere in.</p>
-                <a href="#" class="first-block__btn btn-reset">Read the news</a>
+                <div class="first-block__converter">
+                    <a href="#popup-currency" class="first-block__btn btn-reset popup-link">Currency converter</a>
+                    <div class="first-block__result">Result: {{ currency_rate_for_user.result }}</div>
+                </div>
+                <p class="first-block__item">Selected city: {{ weather_for_searched_city.city_name }}</p>
+                <h1 class="first-block__title">Want to know the latest weather reports in your city? Search city below.</h1>
+                <div class="first-block__description weather-search">
+                    <p class="weather-search__description">Description: {{ weather_for_searched_city.weather_description }}</p>
+                    <p class="weather-search__wind">Wind speed: {{ weather_for_searched_city.wind_speed }} m/s</p>
+                    <p class="weather-search__temp">Temp: {{ weather_for_searched_city.city_temp }} &#8451;</p>
+                    <p class="weather-search__pressure">Pressure: {{ weather_for_searched_city.city_pressure }} mm Hg</p>
+                    <p class="weather-search__humidity">Humidity: {{ weather_for_searched_city.city_humidity }} %</p>
+                </div>
             </div>
             <div class="first-block__bottom">
                 <form action="{% url 'main_page' %}" method="get" class="first-block__form search-form">
@@ -72,52 +78,72 @@
                     <div class="slider-container">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <div class="main-slider">
-                                    <img src="{% static '/media/first_block/weather_1.jpg' %}" class="main-slider__image" alt="Slide-weather-image-1">
+                                <div class="main-slider__media">
+                                    <img src="{% static '/media/first_block/weather_1.jpg' %}" class="main-slider__image" alt="Slide-weather-image-2">
+                                    <div class="main-slider__weather weather-info">
+                                        <div class="weather-info__block-left">
+                                            <p class="weather-info__description">Description: {{ weather_for_base_location_1.weather_description }}</p>
+                                            <p class="weather-info__wind">Wind speed: {{ weather_for_base_location_1.wind_speed }} m/s</p>
+                                        </div>
+                                        <div class="weather-info__block-right">
+                                            <p class="weather-info__temp">Temp: {{ weather_for_base_location_1.city_temp }} &#8451;</p>
+                                            <p class="weather-info__pressure">Pressure: {{ weather_for_base_location_1.city_pressure }} mm Hg</p>
+                                            <p class="weather-info__humidity">Humidity: {{ weather_for_base_location_1.city_humidity }} %</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p class="main-slider__text">city: {{ weather_for_base_location_1.city_name }} </p>
-                                <p class="main-slider__text">time: {{ weather_for_base_location_1.date_time }}</p>
-                                <p class="main-slider__text">description {{ weather_for_base_location_1.weather_description }}</p>
-                                <p class="main-slider__text">wind speed {{ weather_for_base_location_1.wind_speed }}</p>
-                                <p class="main-slider__text">temp {{ weather_for_base_location_1.city_temp }}</p>
-                                <p class="main-slider__text">pressure {{ weather_for_base_location_1.city_pressure }}</p>
-                                <p class="main-slider__text">humidity {{ weather_for_base_location_1.city_humidity }}</p>
+                                <p class="main-slider__text">City: {{ weather_for_base_location_1.city_name }} <br> Time: {{ weather_for_base_location_1.date_time }}</p>
                             </div>
                             <div class="swiper-slide">
                                 <div class="main-slider__media">
                                     <img src="{% static '/media/first_block/weather_2.jpg' %}" class="main-slider__image" alt="Slide-weather-image-2">
+                                    <div class="main-slider__weather weather-info">
+                                        <div class="weather-info__block-left">
+                                            <p class="weather-info__description">Description: {{ weather_for_base_location_2.weather_description }}</p>
+                                            <p class="weather-info__wind">Wind speed: {{ weather_for_base_location_2.wind_speed }} m/s</p>
+                                        </div>
+                                        <div class="weather-info__block-right">
+                                            <p class="weather-info__temp">Temp: {{ weather_for_base_location_2.city_temp }} &#8451;</p>
+                                            <p class="weather-info__pressure">Pressure: {{ weather_for_base_location_2.city_pressure }} mm Hg</p>
+                                            <p class="weather-info__humidity">Humidity: {{ weather_for_base_location_2.city_humidity }} %</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p class="main-slider__text">city: {{ weather_for_base_location_2.city_name }}</p>
-                                <p class="main-slider__text">time: {{ weather_for_base_location_2.date_time }}</p>
-                                <p class="main-slider__text">description {{ weather_for_base_location_2.weather_description }}</p>
-                                <p class="main-slider__text">wind speed {{ weather_for_base_location_2.wind_speed }}</p>
-                                <p class="main-slider__text">temp {{ weather_for_base_location_2.city_temp }}</p>
-                                <p class="main-slider__text">pressure {{ weather_for_base_location_2.city_pressure }}</p>
-                                <p class="main-slider__text">humidity {{ weather_for_base_location_2.city_humidity }}</p>
+                                <p class="main-slider__text">City: {{ weather_for_base_location_2.city_name }} <br> Time: {{ weather_for_base_location_2.date_time }}</p>
                             </div>
                             <div class="swiper-slide">
                                 <div class="main-slider__media">
                                     <img src="{% static '/media/first_block/weather_3.jpg' %}" class="main-slider__image" alt="Slide-weather-image-3">
+                                    <div class="main-slider__weather weather-info">
+                                        <div class="weather-info__block-left">
+                                            <p class="weather-info__description">Description: {{ weather_for_base_location_3.weather_description }}</p>
+                                            <p class="weather-info__wind">Wind speed: {{ weather_for_base_location_3.wind_speed }} m/s</p>
+                                        </div>
+                                        <div class="weather-info__block-right">
+                                            <p class="weather-info__temp">Temp: {{ weather_for_base_location_3.city_temp }} &#8451;</p>
+                                            <p class="weather-info__pressure">Pressure: {{ weather_for_base_location_3.city_pressure }} mm Hg</p>
+                                            <p class="weather-info__humidity">Humidity: {{ weather_for_base_location_3.city_humidity }} %</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p class="main-slider__text">city: {{ weather_for_base_location_3.city_name }}</p>
-                                <p class="main-slider__text">time: {{ weather_for_base_location_3.date_time }}</p>
-                                <p class="main-slider__text">description {{ weather_for_base_location_3.weather_description }}</p>
-                                <p class="main-slider__text">wind speed {{ weather_for_base_location_3.wind_speed }}</p>
-                                <p class="main-slider__text">temp {{ weather_for_base_location_3.city_temp }}</p>
-                                <p class="main-slider__text">pressure {{ weather_for_base_location_3.city_pressure }}</p>
-                                <p class="main-slider__text">humidity {{ weather_for_base_location_3.city_humidity }}</p>
+                                <p class="main-slider__text">City: {{ weather_for_base_location_3.city_name }} <br> Time: {{ weather_for_base_location_3.date_time }}</p>
                             </div>
                             <div class="swiper-slide">
                                 <div class="main-slider__media">
                                     <img src="{% static '/media/first_block/weather_4.jpg' %}" class="main-slider__image" alt="Slide-weather-image-4">
+                                    <div class="main-slider__weather weather-info">
+                                        <div class="weather-info__block-left">
+                                            <p class="weather-info__description">Description: {{ weather_for_base_location_4.weather_description }}</p>
+                                            <p class="weather-info__wind">Wind speed: {{ weather_for_base_location_4.wind_speed }} m/s</p>
+                                        </div>
+                                        <div class="weather-info__block-right">
+                                            <p class="weather-info__temp">Temp: {{ weather_for_base_location_4.city_temp }} &#8451;</p>
+                                            <p class="weather-info__pressure">Pressure: {{ weather_for_base_location_4.city_pressure }} mm Hg</p>
+                                            <p class="weather-info__humidity">Humidity: {{ weather_for_base_location_4.city_humidity }} %</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p class="main-slider__text">city: {{ weather_for_base_location_4.city_name }}</p>
-                                <p class="main-slider__text">time: {{ weather_for_base_location_4.date_time }}</p>
-                                <p class="main-slider__text">description {{ weather_for_base_location_4.weather_description }}</p>
-                                <p class="main-slider__text">wind speed {{ weather_for_base_location_4.wind_speed }}</p>
-                                <p class="main-slider__text">temp {{ weather_for_base_location_4.city_temp }}</p>
-                                <p class="main-slider__text">pressure {{ weather_for_base_location_4.city_pressure }}</p>
-                                <p class="main-slider__text">humidity {{ weather_for_base_location_4.city_humidity }}</p>
+                                <p class="main-slider__text">City: {{ weather_for_base_location_4.city_name }} <br> Time: {{ weather_for_base_location_4.date_time }}</p>
                             </div>
                         </div>
                     </div>

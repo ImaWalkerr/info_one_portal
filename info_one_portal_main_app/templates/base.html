@@ -41,7 +41,7 @@
                 </ul>
             </nav>
         </div>
-        <header class="header">
+        <header id="header" class="header lock-padding">
             <div class="container header__container flex">
                 <ul class="header__social social">
                     <li class="social__item">
@@ -102,7 +102,39 @@
             </div>
         </footer>
     </div>
+    <div id="popup-currency" class="popup">
+        <div class="popup__body">
+            <div class="popup__content">
+                <a href="#header" class="popup__close popup-close">
+                    <i class="fa-solid fa-circle-xmark btn-black"></i>
+                </a>
+                <div class="popup__title">Currency converter</div>
+                <div class="popup__text">Fill form below</div>
+                <div class="popup__form form-currency">
+                    <form action="{% url 'main_page' %}" method="get" class="form-currency__form">
+                        <label>
+                            <input type="text" name="currency-from" placeholder="Currency to convert from (USD...)" class="form-currency__field">
+                        </label>
+                        <label>
+                            <input type="text" name="currency-to" placeholder="Currency to convert to (USD...)" class="form-currency__field">
+                        </label>
+                        <label>
+                            <input type="text" name="currency-amount" placeholder="Currency amount" class="form-currency__field">
+                        </label>
+                        <label>
+                            <input type="text" name="date" placeholder="YYYY-MM-DD" class="form-currency__field">
+                        </label>
+                        <label>
+                            <button type="submit" class="form-currency__btn btn-reset" aria-label="Get currency rate">Get currency rate</button>
+                        </label>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 <script type="text/javascript" src="{% static 'js/swiper.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/popup.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/slider.js' %}"></script>
 </body>
 </html>

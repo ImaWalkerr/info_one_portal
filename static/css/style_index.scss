@@ -1,20 +1,13 @@
-/* variables */
-$white-font-color: #fff;
-$black-font-color: #000;
-$dark-font-color: #1c2e3d;
-$accent-font-color: #e8594e;
-$neptune-font-color: #73afba;
-$accent-hover-font-color: #e31d0e;
-$neptune-hover-font-color: #4196a6;
-
-@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
-$main-font-family: 'Zen Dots', cursive;
-
+@import "variables";
 /* overall */
 .container {
 	max-width: 1626px;
 	padding: 0 30px;
 	margin: 0 auto;
+}
+
+.lock {
+    overflow: hidden;
 }
 
 .wrapper {
@@ -82,7 +75,6 @@ input[type="search"]::-webkit-search-results-decoration {
 		text-shadow: 0 -2px 2px rgba(0, 0, 0, 0.7);
 		margin: 0 0 5px 20px;
 		cursor: pointer;
-		transition: color 0.3s;
 		&:hover {
 			color: $accent-font-color;
 			transition: color 0.3s;
@@ -96,7 +88,6 @@ input[type="search"]::-webkit-search-results-decoration {
 		text-shadow: 0 -2px 2px rgba(0, 0, 0, 0.7);
 		margin: 0 0 0 20px;
 		cursor: pointer;
-		transition: color 0.3s;
 		&:hover {
 			color: $accent-font-color;
 			transition: color 0.3s;
@@ -110,6 +101,20 @@ input[type="search"]::-webkit-search-results-decoration {
 	border-top-right-radius: 8px;
 	line-height: 1;
 	font-size: 0;
+	&__media {
+		position: relative;
+	}
+	&__weather {
+		position: absolute;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		top: 0;
+		left: 0;
+		width: 93%;
+		height: 100%;
+	}
 	&__text {
 		height: 100px;
 		display: flex;
@@ -119,12 +124,11 @@ input[type="search"]::-webkit-search-results-decoration {
 		font-size: 16px;
 		font-weight: 500;
 		letter-spacing: 2px;
-		line-height: 1;
+		line-height: 1.5;
 		text-transform: uppercase;
 		color: $white-font-color;
 		text-shadow: 0 -3px 2px rgba(0, 0, 0, 0.7);
 		background-color: $neptune-font-color;
-		transition: background-color 0.3s;
 		&:hover {
 			background-color: $neptune-hover-font-color;
 			transition: background-color 0.3s;
@@ -134,6 +138,35 @@ input[type="search"]::-webkit-search-results-decoration {
 		width: 100%;
     	height: 280px;
 		object-fit: cover;
+	}
+}
+
+.weather-info {
+	margin: 15px;
+	&__block-left,
+	&__block-right {
+		width: 50%;
+		padding: 10px;
+	}
+	&__description,
+	&__wind,
+	&__temp,
+	&__pressure,
+	&__humidity {
+		font-family: $main-font-family;
+		font-size: 14px;
+		font-weight: 500;
+		color: $white-font-color;
+		background-color: rgba(0, 0, 0, 0.7);
+		text-shadow: 0 -2px 2px rgba(0, 0, 0, 0.5);
+		border-radius: 20px;
+		padding: 10px;
+		margin: 5px 0 0 0;
+		cursor: pointer;
+		&:hover {
+			color: $accent-font-color;
+			transition: color 0.3s;
+		}
 	}
 }
 
@@ -163,7 +196,6 @@ input[type="search"]::-webkit-search-results-decoration {
 		display: block;
 		font-size: 30px;
 		color: $white-font-color;
-		transition: opacity 0.3s;
 		cursor: pointer;
 	}
 	&__link:hover {
@@ -185,7 +217,6 @@ input[type="search"]::-webkit-search-results-decoration {
 	color: $white-font-color;
 	text-shadow: 0 -5px 2px rgba(0, 0, 0, 0.7);
 	text-transform: uppercase;
-	transition: opacity 0.3s;
 	cursor: pointer;
 	z-index: 15;
 	&:hover {
@@ -203,7 +234,6 @@ input[type="search"]::-webkit-search-results-decoration {
 	height: 100%;
 	z-index: 10;
 	background-color: rgba(0, 0, 0, 0.7);
-	transition: left 0.3s;
 	&__visible {
 		left: 0;
 		transition: left 0.3s;
@@ -233,7 +263,6 @@ input[type="search"]::-webkit-search-results-decoration {
 		letter-spacing: 2px;
 		color: $white-font-color;
 		text-shadow: 0 -5px 2px rgba(0, 0, 0, 0.7);
-		transition: color 0.3s;
 		&:hover {
 			color: $accent-font-color;
 			transition: color 0.3s;
@@ -267,7 +296,6 @@ input[type="search"]::-webkit-search-results-decoration {
 	width: 48px;
 	height: 10px;
 	cursor: pointer;
-	transition: background-color 0.3s;
 	&:hover .burger__line {
 		background-color: $accent-font-color;
 		transition: background-color 0.3s;
@@ -281,17 +309,16 @@ input[type="search"]::-webkit-search-results-decoration {
 		height: 2px;
 		background-color: $white-font-color;
 		transition: background-color 0.3s;
-	}
-	&__line:last-child {
-		top: auto;
-		bottom: 0;
+		&:last-child {
+			top: auto;
+			bottom: 0;
+		}
 	}
 }
 
 .languages {
 	color: $white-font-color;
 	cursor: pointer;
-	transition: color 0.3s;
 	margin: 0 40px 0 0;
 	&:hover {
 		color: $accent-font-color;
@@ -301,9 +328,9 @@ input[type="search"]::-webkit-search-results-decoration {
 		position: relative;
 		margin: 0 10px 0 0;
 		font-size: 30px;
-	}
-	li:hover .languages__item {
-		display: block;
+		&:hover .languages__item {
+			display: block;
+		}
 	}
 	&__item {
 		display: none;
@@ -315,7 +342,19 @@ input[type="search"]::-webkit-search-results-decoration {
 		background-color: rgba(0, 0, 0, 0.7);
 		border-radius: 8px;
 	}
-	&__ru,
+	&__ru {
+		font-family: $main-font-family;
+		font-size: 20px;
+		font-weight: 700;
+		text-align: center;
+		color: $white-font-color;
+		text-shadow: 0 -5px 2px rgba(0, 0, 0, 0.7);
+		padding: 10px;
+		&:hover {
+			color: $accent-font-color;
+			transition: color 0.3s;
+		}
+	}
 	&__en {
 		font-family: $main-font-family;
 		font-size: 20px;
@@ -324,15 +363,10 @@ input[type="search"]::-webkit-search-results-decoration {
 		color: $white-font-color;
 		text-shadow: 0 -5px 2px rgba(0, 0, 0, 0.7);
 		padding: 10px;
-		transition: color 0.3s;
-	}
-	&__ru:hover {
-		color: $accent-font-color;
-		transition: color 0.3s;
-	}
-	&__en:hover {
-		color: $accent-font-color;
-		transition: color 0.3s;
+		&:hover {
+			color: $accent-font-color;
+			transition: color 0.3s;
+		}
 	}
 }
 
@@ -359,7 +393,7 @@ input[type="search"]::-webkit-search-results-decoration {
 		width: 68%;
 		height: 100%;
 	}
-	&__link {
+	&__item {
 		display: inline-block;
 		width: fit-content;
 		font-family: $main-font-family;
@@ -372,19 +406,18 @@ input[type="search"]::-webkit-search-results-decoration {
 		background-color: rgba(0, 0, 0, 0.5);
 		border-radius: 25px;
 		text-transform: uppercase;
-		transition: color 0.3s;
 		cursor: pointer;
-	}
-	&__link:hover {
-		color: $accent-font-color;
-		transition: color 0.3s;
+		&:hover {
+			color: $accent-font-color;
+			transition: color 0.3s;
+		}
 	}
 	&__title {
 		font-family: $main-font-family;
-		font-size: 40px;
+		font-size: 25px;
 		font-weight: 700;
 		width: 60%;
-		line-height: 60px;
+		line-height: 35px;
 		color: $white-font-color;
 		text-shadow: 0 -5px 2px rgba(0, 0, 0, 0.7);
 		padding: 15px 30px;
@@ -394,35 +427,48 @@ input[type="search"]::-webkit-search-results-decoration {
 		text-transform: uppercase;
 	}
 	&__description {
-		font-family: $main-font-family;
-		font-size: 15px;
-		font-weight: 600;
-		line-height: 17px;
-		width: 60%;
-		color: $white-font-color;
-		text-shadow: 0 -5px 2px rgba(0, 0, 0, 0.7);
 		padding: 15px 30px;
-		margin: 0 0 30px 0;
+		margin: 0 0 10px 0;
 		background-color: rgba(0, 0, 0, 0.5);
 		border-radius: 25px;
+	}
+	&__converter {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-evenly;
+		width: 68%;
+		height: 45px;
+		margin: 0 0 45px 0;
+	}
+	&__result {
+		width: 60%;
+		height: 45px;
+		font-family: $main-font-family;
+		font-size: 20px;
+		font-weight: 800;
+		padding: 12px 20px;
+		color: $black-font-color;
+		background: $white-font-color;
+		border-radius: 8px;
+		border: 1px solid $black-font-color;
 	}
 	&__btn {
 		width: fit-content;
 		font-family: $main-font-family;
 		font-size: 14px;
 		font-weight: 800;
-		padding: 30px 80px;
+		padding: 15px;
 		color: $white-font-color;
 		text-shadow: 0 -3px 2px rgba(0, 0, 0, 0.7);
 		background-color: $accent-font-color;
-		transition: background-color 0.3s;
 		text-transform: uppercase;
-		border-radius: 10px;
+		border-radius: 8px;
 		z-index: 5;
-	}
-	&__btn:hover {
-		background-color: $accent-hover-font-color;
-		transition: background-color 0.3s;
+		&:hover {
+			background-color: $accent-hover-font-color;
+			transition: background-color 0.3s;
+		}
 	}
 	&__bottom {
 		display: flex;
@@ -432,6 +478,24 @@ input[type="search"]::-webkit-search-results-decoration {
 		transform: translateX(-50%);
 		bottom: 0;
 		width: 100%;
+	}
+}
+
+.weather-search {
+	width: 60%;
+	&__description,
+	&__wind,
+	&__temp,
+	&__pressure,
+	&__humidity {
+		font-family: $main-font-family;
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 25px;
+		width: 60%;
+		color: $white-font-color;
+		text-shadow: 0 -3px 2px rgba(0, 0, 0, 0.7);
+		margin: 0 0 5px 0;
 	}
 }
 
@@ -518,7 +582,6 @@ input[type="search"]::-webkit-search-results-decoration {
 		bottom: 0;
 		opacity: 0;
 		border-radius: 8px;
-		transition: opacity 0.3s ease-in-out;
 	}
 	&__item:hover::before {
 		opacity: 0.7;
@@ -534,7 +597,6 @@ input[type="search"]::-webkit-search-results-decoration {
 		bottom: 0;
 		padding: 0 55px 60px 55px;
 		transform: translateY(300px);
-		transition: transform 0.3s ease-in-out;
 	}
 	&__info {
 		font-family: $main-font-family;
@@ -544,7 +606,6 @@ input[type="search"]::-webkit-search-results-decoration {
 		text-align: left;
 		color: $white-font-color;
 		text-shadow: 0 -5px 2px rgba(0, 0, 0, 0.7);
-		transition: color 0.3s;
 		padding: 0 0 50px 0;
 		&:hover {
 			color: $accent-font-color;
@@ -561,7 +622,6 @@ input[type="search"]::-webkit-search-results-decoration {
 		color: $white-font-color;
 		text-shadow: 0 -3px 2px rgba(0, 0, 0, 0.7);
 		border-radius: 8px;
-		transition: background-color 0.3s;
 		padding: 15px;
 		&:hover {
 			background-color: $accent-hover-font-color;
@@ -652,7 +712,6 @@ input[type="search"]::-webkit-search-results-decoration {
 		bottom: 0;
 		opacity: 0;
 		border-radius: 8px;
-		transition: opacity 0.3s ease-in-out;
 	}
 	&:hover::before {
 		opacity: 0.7;
@@ -667,7 +726,6 @@ input[type="search"]::-webkit-search-results-decoration {
     	width: 100%;
 		padding: 40px 20px;
 		transform: translateY(300px);
-		transition: transform 0.3s ease-in-out;
 	}
 	&:hover .card__popup {
 		transform: translateY(0);
@@ -683,7 +741,6 @@ input[type="search"]::-webkit-search-results-decoration {
 		width: 100%;
 		padding: 70px 20px;
 		transform: translateY(450px);
-		transition: transform 0.3s ease-in-out;
 	}
 	&:hover .card__popup-medium {
 		transform: translateY(0);
@@ -698,7 +755,6 @@ input[type="search"]::-webkit-search-results-decoration {
 		color: $black-font-color;
 		text-shadow: 0 -2px 2px rgba(255, 255, 255, 0.7);
 		padding: 25px 0 0 35px;
-		transition: color 0.3s;
 		&:hover {
 			color: $accent-font-color;
 			transition: color 0.3s;
@@ -712,7 +768,6 @@ input[type="search"]::-webkit-search-results-decoration {
 		color: $black-font-color;
 		text-shadow: 0 -2px 2px rgba(255, 255, 255, 0.7);
 		padding: 15px;
-		transition: color 0.3s;
 		&:hover {
 			color: $accent-font-color;
 			transition: color 0.3s;
@@ -727,7 +782,6 @@ input[type="search"]::-webkit-search-results-decoration {
 		color: $black-font-color;
 		text-shadow: 0 -2px 2px rgba(255, 255, 255, 0.7);
 		padding: 15px;
-		transition: color 0.3s;
 		&:hover {
 			color: $accent-hover-font-color;
 			transition: color 0.3s;
@@ -790,8 +844,8 @@ input[type="search"]::-webkit-search-results-decoration {
 	&__field-name,
 	&__field-email,
 	&__field-post {
-		width: 420px;
-		height: 80px;
+		max-width: 420px;
+		max-height: 80px;
 		font-family: $main-font-family;
 		font-size: 20px;
 		font-weight: 500;
@@ -811,7 +865,6 @@ input[type="search"]::-webkit-search-results-decoration {
 		border-bottom-left-radius: 8px;
 		border-bottom-right-radius: 8px;
 		text-transform: uppercase;
-		transition: background-color 0.3s;
 		&:hover {
 			background-color: $neptune-hover-font-color;
 			transition: background-color 0.3s;
@@ -842,7 +895,6 @@ input[type="search"]::-webkit-search-results-decoration {
 		color: $black-font-color;
 		text-shadow: 0 -3px 2px rgba(255, 255, 255, 0.7);
 		margin: 0 0 10px 0;
-		transition: color 0.3s;
 		&:hover {
 			color: $accent-font-color;
 			transition: color 0.3s;
@@ -855,7 +907,6 @@ input[type="search"]::-webkit-search-results-decoration {
 		text-align: center;
 		color: $black-font-color;
 		text-shadow: 0 -3px 2px rgba(255, 255, 255, 0.7);
-		transition: color 0.3s;
 		&:hover {
 			color: $accent-font-color;
 			transition: color 0.3s;

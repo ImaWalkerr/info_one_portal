@@ -5,6 +5,7 @@ from decouple import config
 
 class WeatherApiWrapper:
     """Weather api"""
+    # api used - https://openweathermap.org/api
     WEATHER_USER_API_KEY = config('WEATHER_USER_API_KEY')
     WEATHER_API_URL = config('WEATHER_API_URL')
     BASE_LOCATION_1 = config('BASE_LOCATION_1')
@@ -20,12 +21,13 @@ class WeatherApiWrapper:
         api_link_city = requests.get(api_link_for_city)
         api_data_city = api_link_city.json()
 
+        # convert data to readable format
         data_for_search_city = []
-
         if api_data_city['cod'] == '404':
             raise Exception('Incorrect city name, please check your city name and try again.')
         else:
             data_search_city = {
+                'city_name': api_data_city.get('name'),
                 'city_temp': float('{:.3f}'.format((api_data_city['main'].get('temp')) - 273.15)),
                 'city_pressure': api_data_city['main'].get('pressure'),
                 'city_humidity': api_data_city['main'].get('humidity'),
@@ -39,9 +41,8 @@ class WeatherApiWrapper:
     # weather api request for base 4 cities for main_page.html
     def get_weather_for_bases_cities(self):
 
-        all_weather_data = []
-
         # add weather information to each city to one variable
+        all_weather_data = []
         for location in self.ALL_BASE_LOCATIONS:
             api_link_for_base_locations = f'{self.WEATHER_API_URL}?q={location}&appid={self.WEATHER_USER_API_KEY}'
             api_link_base_locations = requests.get(api_link_for_base_locations)
@@ -58,9 +59,8 @@ class WeatherApiWrapper:
                 elif location == self.ALL_BASE_LOCATIONS[3]:
                     all_weather_data.append(api_data_base_locations)
 
-        weather_data = []
-
         # convert data to readable format
+        weather_data = []
         for item in all_weather_data:
             weather = {
                 'city_name': item.get('name'),
