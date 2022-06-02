@@ -24,16 +24,16 @@ class MainPageView(views.View):
 
         # Currency api block
         # Base currencies rates
-        currencies = CURRENCY_API_WRAPPER.get_list_of_currencies()
+        # currencies = CURRENCY_API_WRAPPER.get_list_of_currencies()
 
         # Currency rate for user
         currency_from = request.GET.get('currency-from')
         currency_to = request.GET.get('currency-to')
         currency_amount = request.GET.get('currency-amount')
         date_time = request.GET.get('date')
-        currency_rate_for_user = CURRENCY_API_WRAPPER.get_currency_rate_for_converter(
-            currency_from=currency_from, currency_to=currency_to, currency_amount=currency_amount, date_time=date_time
-        )
+        # currency_rate_for_user = CURRENCY_API_WRAPPER.get_currency_rate_for_converter(
+        #     currency_from=currency_from, currency_to=currency_to, currency_amount=currency_amount, date_time=date_time
+        # )
 
         context = {
             'weather_for_searched_city': weather_for_searched_city,
@@ -41,8 +41,8 @@ class MainPageView(views.View):
             'weather_for_base_location_2': weather_for_base_location_2,
             'weather_for_base_location_3': weather_for_base_location_3,
             'weather_for_base_location_4': weather_for_base_location_4,
-            'currencies': currencies,
-            'currency_rate_for_user': currency_rate_for_user,
+            # 'currencies': currencies,
+            # 'currency_rate_for_user': currency_rate_for_user,
             'title': 'InfoOnePortal',
         }
         return render(request, 'index.html', context)
